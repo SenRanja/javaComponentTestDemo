@@ -1,6 +1,6 @@
 package cn.blingsec.desensitization.model;
 
-import cn.blingsec.desensitization.annotation.ChineseNameSensitive;
+import cn.blingsec.desensitization.annotation.NameSensitive;
 import cn.blingsec.desensitization.annotation.CommonOmissionSensitive;
 import cn.blingsec.desensitization.annotation.PhoneNumberSensitive;
 
@@ -9,7 +9,7 @@ import cn.blingsec.desensitization.annotation.PhoneNumberSensitive;
  */
 public class Mother extends Parent {
 
-    @ChineseNameSensitive(regexp = "婷")
+    @NameSensitive(regexp = "婷")
     private String name = "张婷婷";
 
     @PhoneNumberSensitive

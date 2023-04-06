@@ -41,7 +41,7 @@ public class CommonOmissionDesensitizer extends AbstractCharSequenceDesensitizer
     private void validateLength(String target, CommonOmissionSensitive annotation) {
         int length = target.length();
         if (length < 3) {
-            throw new IllegalArgumentException("数据格式错误，数据脱敏失败!");
+            throw new IllegalArgumentException("Wrong Data");
         }
     }
 }

@@ -53,26 +53,40 @@ public class DesensitizationTest {
         System.out.println("演示银行卡数据过长脱敏 "+bankId_too_long_raw);
         System.out.println(bankId_too_long);
         // Name
-        JsonObject name0 = Sensitive.desensitize("三", new TypeToken<@ChineseNameSensitive String>() {
+        JsonObject name0 = Sensitive.desensitize("三", new TypeToken<@NameSensitive String>() {
         });
-        JsonObject name1 = Sensitive.desensitize("张三", new TypeToken<@ChineseNameSensitive String>() {
+        JsonObject name1 = Sensitive.desensitize("张三", new TypeToken<@NameSensitive String>() {
         });
-        JsonObject name2 = Sensitive.desensitize("张某三", new TypeToken<@ChineseNameSensitive String>() {
+        JsonObject name2 = Sensitive.desensitize("张某三", new TypeToken<@NameSensitive String>() {
         });
-        JsonObject name3 = Sensitive.desensitize("阿不都沙拉克", new TypeToken<@ChineseNameSensitive String>() {
+        JsonObject name3 = Sensitive.desensitize("阿不都沙拉克", new TypeToken<@NameSensitive String>() {
         });
         System.out.println("演示姓名脱敏");
         System.out.println(name0);
         System.out.println(name1);
         System.out.println(name2);
         System.out.println(name3);
+        JsonObject name4 = Sensitive.desensitize("SenRanja Hunt", new TypeToken<@NameSensitive String>() {
+        });
+        JsonObject name5 = Sensitive.desensitize("Bunny Polt", new TypeToken<@NameSensitive String>() {
+        });
+        JsonObject name6 = Sensitive.desensitize("Innovation", new TypeToken<@NameSensitive String>() {
+        });
+        System.out.println(name4);
+        System.out.println(name5);
+        System.out.println(name6);
 
         System.out.println("演示身份证号脱敏");
         String idcard1_raw = "141181199904230063";
-        System.out.println("测试用身份证号:"+idcard1_raw);
+        System.out.println("测试用身份证号 方式一 仅显示前三位:"+idcard1_raw);
         JsonObject idcard1 = Sensitive.desensitize(idcard1_raw, new TypeToken<@IdCardNumberSensitive String>() {
         });
         System.out.println(idcard1);
+        String idcard3_raw = "141181199904230063";
+        System.out.println("测试用身份证号 方式二 显示前三位和后四位:"+idcard3_raw);
+        JsonObject idcard3 = Sensitive.desensitize(idcard3_raw, new TypeToken<@IdCardNumberSensitive(desensitizeType = IdCardNumberSensitive.DesensitizeType.TYPE_2) String>() {
+        });
+        System.out.println(idcard3);
         String idcard2_raw = "1411811999042300623";
         System.out.println("测试用身份证号:"+idcard2_raw);
         JsonObject idcard2 = Sensitive.desensitize(idcard2_raw, new TypeToken<@IdCardNumberSensitive String>() {

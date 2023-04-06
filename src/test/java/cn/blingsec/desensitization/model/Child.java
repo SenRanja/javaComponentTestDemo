@@ -3,7 +3,7 @@ package cn.blingsec.desensitization.model;
 import cn.blingsec.desensitization.annotation.BankCardNumberSensitive;
 import cn.blingsec.desensitization.annotation.CascadeSensitive;
 import cn.blingsec.desensitization.annotation.CharSequenceSensitive;
-import cn.blingsec.desensitization.annotation.ChineseNameSensitive;
+import cn.blingsec.desensitization.annotation.NameSensitive;
 import cn.blingsec.desensitization.annotation.EmailSensitive;
 import cn.blingsec.desensitization.annotation.CommonOmissionSensitive;
 import cn.blingsec.desensitization.annotation.PasswordSensitive;
@@ -27,7 +27,7 @@ import java.util.stream.Stream;
  */
 public class Child<T extends Collection<@EmailSensitive String>> extends Parent {
 
-    @ChineseNameSensitive(placeholder = 'x')
+    @NameSensitive(placeholder = 'x')
     private String name = "李富贵";
 
     @PhoneNumberSensitive(desensitizer = CustomizedPhoneNumberDesensitizer.class)
@@ -61,7 +61,7 @@ public class Child<T extends Collection<@EmailSensitive String>> extends Parent 
 
     private List<@EmailSensitive String> emails1 = Stream.of("123456@qq.com", "1234567@qq.com", "1234568@qq.com").collect(Collectors.toList());
 
-    private Map<@ChineseNameSensitive String, @EmailSensitive String> emails2 = Stream.of("张三", "李四", "小明").collect(Collectors.toMap(s -> s, s -> "123456@qq.com"));
+    private Map<@NameSensitive String, @EmailSensitive String> emails2 = Stream.of("张三", "李四", "小明").collect(Collectors.toMap(s -> s, s -> "123456@qq.com"));
 
     private Map<@CascadeSensitive Parent, @EmailSensitive String> parents2 = Stream.of(new Father(), new Mother()).collect(Collectors.toMap(p -> p, p -> "123456@qq.com"));
 

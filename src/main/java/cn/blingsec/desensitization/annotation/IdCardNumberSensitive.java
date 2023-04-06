@@ -24,6 +24,15 @@ import java.lang.annotation.Target;
 @SensitiveAnnotation
 public @interface IdCardNumberSensitive {
 
+    // 添加一个枚举类型，表示脱敏方式
+    enum DesensitizeType {
+        TYPE_1,
+        TYPE_2
+    }
+
+    // 添加一个新属性，用于表示脱敏方式，默认值为 TYPE_1
+    DesensitizeType desensitizeType() default DesensitizeType.TYPE_1;
+
     /**
      * @return 处理被 {@link IdCardNumberSensitive}标记的对象脱敏器，可以自定义子类重写默认的处理逻辑。
      */

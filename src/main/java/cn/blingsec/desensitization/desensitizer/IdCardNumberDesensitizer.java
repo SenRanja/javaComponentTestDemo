@@ -12,7 +12,25 @@ public class IdCardNumberDesensitizer extends AbstractCharSequenceDesensitizer<S
     @Override
     public String desensitize(String target, IdCardNumberSensitive annotation) {
         validateLength(target);
-        return required(target, annotation.condition()) ? String.valueOf(desensitize(target, annotation.regexp(), annotation.startOffset(), annotation.endOffset(), annotation.placeholder())) : target;
+
+        switch (annotation.desensitizeType()) {
+            case TYPE_1:
+                return desensitizeType1(target, annotation);
+            case TYPE_2:
+                return desensitizeType2(target, annotation);
+            default:
+                throw new IllegalArgumentException("未知的脱敏类型");
+        }
+//        return required(target, annotation.condition()) ? String.valueOf(desensitize(target, annotation.regexp(), annotation.startOffset(), annotation.endOffset(), annotation.placeholder())) : target;
+    }
+
+    private String desensitizeType1(String target, IdCardNumberSensitive annotation) {
+        return required(target, annotation.condition()) ? String.valueOf(desensitize(target, annotation.regexp(), annotation.startOffset(), 0, annotation.placeholder())) : target;
+    }
+
+
+    private String desensitizeType2(String target, IdCardNumberSensitive annotation) {
+        return required(target, annotation.condition()) ? String.valueOf(desensitize(target, annotation.regexp(), annotation.startOffset(), 4, annotation.placeholder())) : target;
     }
 
 

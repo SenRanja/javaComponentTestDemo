@@ -71,7 +71,8 @@ public final class Sensitive {
             result = result_tmp.toString();
         } catch (IllegalArgumentException e) {
             errorCode = 1;
-            result = e.getMessage();
+//            result = e.getMessage();
+            result = "Wrong Data!";
         }
 
         JsonObject jsonObject = new JsonObject();

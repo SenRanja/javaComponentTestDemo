@@ -1,6 +1,6 @@
 package cn.blingsec.desensitization.model;
 
-import cn.blingsec.desensitization.annotation.ChineseNameSensitive;
+import cn.blingsec.desensitization.annotation.NameSensitive;
 import cn.blingsec.desensitization.annotation.CommonOmissionSensitive;
 import cn.blingsec.desensitization.annotation.PhoneNumberSensitive;
 
@@ -11,7 +11,7 @@ import java.util.StringJoiner;
  */
 abstract class Parent {
 
-    @ChineseNameSensitive
+    @NameSensitive
     private String name = "Parent";
 
     @PhoneNumberSensitive
