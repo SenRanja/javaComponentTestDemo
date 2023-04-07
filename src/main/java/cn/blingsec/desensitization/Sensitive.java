@@ -1,6 +1,6 @@
 package cn.blingsec.desensitization;
 
-import cn.blingsec.desensitization.annotation.CascadeSensitive;
+
 import cn.blingsec.desensitization.resolver.TypeResolvers;
 import cn.blingsec.desensitization.support.TypeToken;
 import com.google.gson.JsonObject;
