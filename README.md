@@ -1,4 +1,4 @@
-# 兴业银行desensitization
+# XXX desensitization
 
 基于Java反射api、注解，包含但不限于以下类型的数据脱敏：
 
